@@ -119,6 +119,13 @@ export const Graph = () => {
       yearEnd: 2022,
       color: getRandomColor(),
     },
+    {
+      name: "Integrations",
+      project: ["Gratisal", "GenieBelt"],
+      yearStart: 2020,
+      yearEnd: 2023,
+      color: getRandomColor(),
+    },
   ];
 
   const yPostStart = 500;

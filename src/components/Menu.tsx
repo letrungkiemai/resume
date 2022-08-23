@@ -19,10 +19,16 @@ export const Menu = () => {
           </h1>
         </div>
         <h1
-          onClick={() => window.scrollTo({ top: 750, behavior: "smooth" })}
+          onClick={() => window.scrollTo({ top: 1350, behavior: "smooth" })}
           className="font-black font-bold text-2xl mb-4 hover:underline  hover:cursor-pointer"
         >
           Experiences
+        </h1>
+        <h1
+          onClick={() => window.scrollTo({ top: 4500, behavior: "smooth" })}
+          className="font-black font-bold text-2xl mb-4 hover:underline  hover:cursor-pointer"
+        >
+          Projects
         </h1>
         <h1
           onClick={() => window.scrollTo({ top: 4500, behavior: "smooth" })}

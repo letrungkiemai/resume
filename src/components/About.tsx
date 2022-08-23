@@ -16,6 +16,13 @@ export const About = () => {
       </p>
       <br />
       <p className="text-justify">
+        Among other things, I have also worked a lot with 3rd party
+        integrations, for example payment systems (Adyen, Braintree PayPal),
+        subscription system (Upodi) and logistics system (Dream, Janssen). The
+        integrations are done via either SDK, webhooks or HTTP.
+      </p>
+      <br />
+      <p className="text-justify">
         I love learning and developing new skills but what I am most passionate
         about is to work with and provide simple yet robust and sustainable
         solutions to the various and ever demanding software development sphere.
@@ -31,7 +38,13 @@ export const About = () => {
         I am originally from Vietnam. Moved to Denmark in 2014 and have
         established permanent residency here.
       </p>
-      <Graph></Graph>
+      <div className="sm:block hidden">
+        <Graph></Graph>
+        <p className="text-justify italic">
+          *** Above are some of the technologies I am familiar with and my
+          relative experiences working with them
+        </p>
+      </div>
     </div>
   );
 };
