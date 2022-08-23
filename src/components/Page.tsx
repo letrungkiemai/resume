@@ -1,4 +1,3 @@
-import ai from "../ai.png";
 import { About } from "./About";
 import { Edu } from "./Edu";
 import { Exp } from "./Exp";

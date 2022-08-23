@@ -1,4 +1,5 @@
 import "./App.css";
+import { Graph } from "./components/ExpGraph";
 import { Header } from "./components/Header";
 import { Page } from "./components/Page";
 

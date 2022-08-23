@@ -1,3 +1,5 @@
+import { Graph } from "./ExpGraph";
+
 export const About = () => {
   return (
     <div className="m-8">
@@ -29,6 +31,7 @@ export const About = () => {
         I am originally from Vietnam. Moved to Denmark in 2014 and have
         established permanent residency here.
       </p>
+      <Graph></Graph>
     </div>
   );
 };
