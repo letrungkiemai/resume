@@ -3,7 +3,6 @@ import { Edu } from "./Edu";
 import { Exp } from "./Exp";
 import { Menu } from "./Menu";
 import { Projects } from "./Projects";
-import job from "../job.png";
 export const Page = () => {
   return (
     <div className="flex flex-row container m-auto max-w-none h-52 bg-slate-200 h-auto text-slate-900">

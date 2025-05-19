@@ -23,6 +23,7 @@ export const CompanySection = ({
             className="rounded-full"
             style={{ maxWidth: "100px" }}
             src={logo}
+            alt="logo"
           ></img>
         </div>
         <div>

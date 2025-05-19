@@ -1,5 +1,4 @@
 import * as d3 from "d3";
-import { Numeric } from "d3";
 import React from "react";
 export const Graph = () => {
   const ref = React.useRef<SVGSVGElement | null>(null);
@@ -177,7 +176,7 @@ export const Graph = () => {
     if (ref.current && !ref.current.children.length) {
       drawElm(ref.current);
     }
-  }, []);
+  }, [drawElm]);
 
   return (
     <div className="svg">

@@ -5,7 +5,7 @@ export const Header = () => {
     <header className={`sticky top-0 z-50`}>
       <div className="flex sm:flex-row flex-col container m-auto max-w-none h-52 bg-slate-800">
         <div className="sm:block hidden mt-auto mb-auto ml-8 mr-8 basis-52">
-          <a href={"https://linkedin.com/in/ailetrungkiem"} target="_blank">
+          <a href={"https://linkedin.com/in/ailetrungkiem"} target="_blank" rel="noreferrer" >
             <img className="h-44 rounded-full border-8" src={ai} alt="aile" />
           </a>
         </div>
