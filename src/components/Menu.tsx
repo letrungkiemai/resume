@@ -14,9 +14,6 @@ export const Menu = () => {
           <h1>
             <a href="mailto:l.trung.k.ai@gmail.com">l.trung.k.ai@gmail.com</a>
           </h1>
-          <h1>
-            <a href="tel:+4560698779">+45 60 69 87 79</a>
-          </h1>
         </div>
         <h1
           onClick={() => window.scrollTo({ top: 1350, behavior: "smooth" })}
