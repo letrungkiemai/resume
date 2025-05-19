@@ -176,7 +176,7 @@ export const Graph = () => {
     if (ref.current && !ref.current.children.length) {
       drawElm(ref.current);
     }
-  }, [drawElm]);
+  });
 
   return (
     <div className="svg">
