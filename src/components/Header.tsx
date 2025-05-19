@@ -29,11 +29,6 @@ export const Header = () => {
               www.linkedin.com/in/ailetrungkiem
             </a>
           </h1>
-          <h1>
-            <a href="tel:+4560698779">
-              <span className="text-xl">📞</span> +45 60 69 87 79
-            </a>
-          </h1>
         </div>
       </div>
     </header>
