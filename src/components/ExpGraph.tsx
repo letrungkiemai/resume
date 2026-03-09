@@ -3,7 +3,7 @@ import React from "react";
 export const Graph = () => {
   const ref = React.useRef<SVGSVGElement | null>(null);
 
-  const width = 1400;
+  const width = 1100;
   const height = 700;
   const margin = { top: 60, right: 60, bottom: 60, left: 120 };
 
@@ -37,7 +37,7 @@ export const Graph = () => {
       name: "JavaScript",
       project: ["LetsBuild", "Gratisal", "Goodiebox"],
       yearStart: 2015,
-      yearEnd: 2023,
+      yearEnd: 2026,
       color: getRandomColor(),
     },
     {
@@ -51,7 +51,7 @@ export const Graph = () => {
       name: "TypeScript",
       project: ["Gratisal", "GenieBelt"],
       yearStart: 2018,
-      yearEnd: 2023,
+      yearEnd: 2026,
       color: getRandomColor(),
     },
 
@@ -59,21 +59,21 @@ export const Graph = () => {
       name: "React/NextJS",
       project: ["Gratisal", "GenieBelt"],
       yearStart: 2017,
-      yearEnd: 2023,
+      yearEnd: 2026,
       color: getRandomColor(),
     },
     {
       name: "GraphQL",
-      project: ["Gratisal", "GenieBelt"],
+      project: ["Gratisal", "GenieBelt", "GoWish"],
       yearStart: 2018,
-      yearEnd: 2019,
+      yearEnd: 2026,
       color: getRandomColor(),
     },
     {
       name: "Postgres",
       project: ["Gratisal", "GenieBelt"],
       yearStart: 2017,
-      yearEnd: 2023,
+      yearEnd: 2026,
       color: getRandomColor(),
     },
     {
@@ -94,14 +94,14 @@ export const Graph = () => {
       name: "Google Cloud Platform",
       project: ["Gratisal", "GenieBelt"],
       yearStart: 2020,
-      yearEnd: 2023,
+      yearEnd: 2025,
       color: getRandomColor(),
     },
     {
       name: "NodeJS/ExpressJS",
       project: ["Gratisal", "GenieBelt"],
       yearStart: 2019,
-      yearEnd: 2023,
+      yearEnd: 2026,
       color: getRandomColor(),
     },
     {
@@ -122,7 +122,42 @@ export const Graph = () => {
       name: "Integrations",
       project: ["Gratisal", "GenieBelt"],
       yearStart: 2020,
-      yearEnd: 2023,
+      yearEnd: 2026,
+      color: getRandomColor(),
+    },
+    {
+      name: "Neo4J",
+      project: ["GoWish"],
+      yearStart: 2024,
+      yearEnd: 2026,
+      color: getRandomColor(),
+    },
+    {
+      name: "Web development",
+      project: ["GoWish"],
+      yearStart: 2015,
+      yearEnd: 2026,
+      color: getRandomColor(),
+    },
+    {
+      name: "Mobile development",
+      project: ["GoWish"],
+      yearStart: 2023,
+      yearEnd: 2026,
+      color: getRandomColor(),
+    },
+     {
+      name: "React-native",
+      project: ["GoWish"],
+      yearStart: 2024,
+      yearEnd: 2025,
+      color: getRandomColor(),
+    },
+     {
+      name: "Flutter/Dart",
+      project: ["GoWish"],
+      yearStart: 2025,
+      yearEnd: 2026,
       color: getRandomColor(),
     },
   ];
@@ -132,44 +167,55 @@ export const Graph = () => {
   console.log(`data`, data);
   const drawElm = (ref: SVGSVGElement) => {
     const svg = d3.select(ref).attr("width", width).attr("height", height);
+    svg.selectAll("*").remove();
 
-    const xAxis = d3
-      .scaleUtc()
-      .domain([new Date("2014-01-01"), new Date("2023-01-01")])
-      .range([margin.left, width]);
+    const xScale = d3
+      .scaleLinear()
+      .domain([2014, 2027])
+      .range([margin.left, width - margin.right]);
 
-    svg.append("g").call((g) => {
-      g.attr("transform", `translate(0, ${height - margin.bottom})`)
-        .call(d3.axisBottom(xAxis))
-        .call((g) =>
-          g
-            .append("text")
-            .attr("x", 30)
-            .attr("y", 16)
-            .attr("fill", "#000")
-            .attr("font-weight", "bold")
-            .attr("text-anchor", "end")
-            .attr("class", "axis-label")
-            .text("Year")
-        );
-    });
+    const yScale = d3
+      .scaleBand<string>()
+      .domain(data.map((d) => d.name))
+      .range([margin.top, height - margin.bottom])
+      .padding(0.2);
 
-    const leaf = svg.selectAll("circle").data(data);
+    svg
+      .append("g")
+      .attr("transform", `translate(0, ${height - margin.bottom})`)
+      .call(d3.axisBottom(xScale).ticks(14).tickFormat(d3.format("d")));
 
-    leaf
-      .join("circle")
-      .attr("cx", (d) => margin.left + (d.yearStart - 2014) * (width / 9))
-      .attr("cy", (d) => d.yPos || yPostStart)
-      .attr("r", (d) => (d.yearEnd - d.yearStart) * 20)
+    svg
+      .append("g")
+      .attr("transform", `translate(${margin.left}, 0)`)
+      .call(d3.axisLeft(yScale));
+
+    svg
+      .append("g")
+      .selectAll("rect")
+      .data(data)
+      .join("rect")
+      .attr("x", (d) => xScale(d.yearStart))
+      .attr("y", (d) => yScale(d.name) || margin.top)
+      .attr("width", (d) => xScale(d.yearEnd) - xScale(d.yearStart))
+      .attr("height", yScale.bandwidth())
+      .attr("rx", 4)
+      .attr("ry", 4)
       .attr("fill", (d) => d.color)
-      .attr("opacity", 0.3)
-      .attr("stroke", (d) => d.color);
+      .attr("opacity", 0.5);
 
-    leaf
+    svg
+      .append("g")
+      .selectAll("text")
+      .data(data)
       .join("text")
       .text((d) => d.name)
-      .attr("x", (d) => margin.left + ((d.yearStart - 2014) * (width / 9) - 20))
-      .attr("y", (d) => d.yPos || yPostStart);
+      .attr("x", (d) => xScale(d.yearStart) + 8)
+      .attr("y", (d) => (yScale(d.name) || margin.top) + yScale.bandwidth() / 2)
+      .attr("dominant-baseline", "middle")
+      .attr("fill", "#111")
+      .attr("font-size", 12)
+      .attr("pointer-events", "none");
   };
 
   React.useEffect(() => {

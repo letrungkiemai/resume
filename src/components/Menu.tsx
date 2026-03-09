@@ -3,14 +3,14 @@ import React from "react";
 export const Menu = () => {
   return (
     <div className="fixed top-200">
-      <div className="flex flex-col m-auto ml-0 font-mono">
+      <div className="flex flex-col m-auto ml-0">
         <h1
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="font-black font-bold text-2xl mb-4 hover:underline hover:cursor-pointer"
         >
           About me
         </h1>
-        <div className="sm:m-0 sm:mb-4 sm:text-sm font-mono">
+        <div className="sm:m-0 sm:mb-4 sm:text-sm">
           <h1>
             <a href="mailto:l.trung.k.ai@gmail.com">l.trung.k.ai@gmail.com</a>
           </h1>
